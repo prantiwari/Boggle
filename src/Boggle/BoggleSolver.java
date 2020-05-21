@@ -7,8 +7,6 @@ import java.util.HashSet;
 
 
 
-
-
 public class BoggleSolver
 {
     // Initializes the data structure using the given array of strings as the dictionary.
