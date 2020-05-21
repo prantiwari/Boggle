@@ -86,7 +86,7 @@ public class BoggleSolver
     }
         private void dfs(BoggleBoard board,Bag<Integer>[] bags, int n) {
             boolean isQ = false;
-            char letter = board.getLetter(getRow(n,board.cols()),getCol(n, board.rows()));
+            char letter = board.getLetter(getRow(n,board.cols()),getCol(n, board.cols()));
             marked[n]=true;
             if (letter == 'Q'){
                 isQ = true;
@@ -116,7 +116,7 @@ public class BoggleSolver
       return (n/col);
   }
    private int getCol(int n,int col) {
-        return (n%col);
+        return (n % col);
            }
 
    public static void main(String[] args) {
@@ -155,10 +155,10 @@ public class BoggleSolver
        chars[3][3]='T';
 
 
-        BoggleBoard board=new BoggleBoard(chars);
+        BoggleBoard board=new BoggleBoard("board-dichlorodiphenyltrichloroethanes.txt");
         System.out.println(board);
         String[] words;
-        In in=new In("dictionary-algs4.txt");
+        In in=new In("dictionary-yawl.txt");
 
         words=in.readAllStrings();
 
