@@ -66,21 +66,27 @@ public class BoggleSolver
             int[] n={i,i+1,i+cols,i-cols,i+cols+1,i-cols+1};
 
             if(i%cols==0)
-                addEdges(bags,n,i,cap);
+                addEdges(bags,n,i,cap, board);
+
              else if(i%cols==cols-1)
-                addEdges(bags,m,i,cap);
+                addEdges(bags,m,i,cap, board);
             else
-                addEdges(bags,l,i,cap);
+                addEdges(bags,l,i,cap, board);
         }
 
         return bags;
     }
 
-    private void addEdges(Bag<Integer>[] bags, int[] edges, int v, int cap) {
-      for(int e:edges)
-          if(e>=0 && e <cap) {
-              bags[v].add(e);}
-
+    private void addEdges(Bag<Integer>[] bags, int[] edges, int v, int cap,BoggleBoard board) {
+        int rowv = getRow(v, board.cols());
+        int rowe = 0;
+        for(int e:edges) {
+          rowe = getRow(e, board.cols());
+            if(e>=0 && e <cap && Math.abs((Math.abs(rowv) - Math.abs(rowe))) <= 1  )
+            {
+              bags[v].add(e);
+            }
+        }
     }
         private void dfs(BoggleBoard board,Bag<Integer>[] bags, int n) {
             boolean isQ = false;
