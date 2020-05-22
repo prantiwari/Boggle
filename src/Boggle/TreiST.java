@@ -1,11 +1,14 @@
 package Boggle;
 
+import java.util.Stack;
+
 public class TreiST {
     private static int R = 26;
     private Node root;
+    private Stack<Node> parents;
 
     public TreiST(String[] dictionary) {
-
+        parents = new Stack<>();
         for (int i = 0; i < dictionary.length; i++)
             put(dictionary[i], i);
 
